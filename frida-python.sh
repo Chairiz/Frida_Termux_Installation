@@ -31,10 +31,10 @@ apt update && pkg upgrade -y
 pkg i -y python git curl && pip install -U setuptools
 
 # Fetch latest Frida version
-FRIDA_VERSION=$(curl -s https://api.github.com/repos/Alexjr2/Frida_Termux_Installation/releases/latest | grep -oP '"tag_name":\s*"\K[^"]+')
+FRIDA_VERSION=$(curl -s https://api.github.com/repos/Frida/Frida/releases/latest | grep -oP '"tag_name":\s*"\K[^"]+')
 
 # Download Frida devkit
-DEVKIT_URL="https://github.com/Alexjr2/Frida_Termux_Installation/releases/latest/download/frida-core-devkit-android-$arch.tar.xz"
+DEVKIT_URL="https://github.com/Frida/Frida/releases/latest/download/frida-core-devkit-android-$arch.tar.xz"
 DEVKIT_FILE="frida-core-devkit-android-$arch.tar.xz"
 
 curl -L -o "$DEVKIT_FILE" "$DEVKIT_URL"
@@ -47,7 +47,7 @@ git clone -b 16.6.6 --depth 1 https://github.com/frida/frida-python.git
 
 # fix setup.py
 cd frida-python
-curl -LO https://raw.githubusercontent.com/Alexjr2/Frida_Termux_Installation/refs/heads/main/frida-python.patch
+curl -LO https://raw.githubusercontent.com/Chairiz/Frida_Termux_Installation/refs/heads/main/frida-python.patch
 patch -p1 < frida-python.patch
 
 #install frida-python
